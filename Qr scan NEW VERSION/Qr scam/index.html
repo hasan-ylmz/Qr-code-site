@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soru - 1</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: "Courier New", Courier, monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .big {
+      font-size: 36px; /* Başlık için büyük font boyutu */
+    }
+    .small {
+      font-size: 24px; /* Cevap için daha küçük font boyutu */
+    }
+  </style>
+</head>
+<body>
+  <h1 id="header" class="big"></h1>
+  <p id="paragraph1"></p>
+  <p id="paragraph2"></p>
+  <p id="paragraph3"></p>
+  <p id="paragraph4"></p>
+  <p id="paragraph5"></p>
+  <p id="paragraph6"></p>
+  <p id="message1" class="small"></p>
+  <p id="message2" class="small"></p>
+
+  <script>
+    const headerText = "Soru 1 ";
+    const paragraphText1 = "Phishing saldırılarına karşı korunmak için hangi aşamalar önerilir?";
+    const paragraphText2 = "A) Güçlü parolalar oluşturmak ve düzenli olarak değiştirmek";
+    const paragraphText3 = "B) Bilinmeyen e-posta eklerini ve bağlantılarını açmaktan kaçınmak";
+    const paragraphText4 = "C) Sosyal medya hesaplarında paylaşılan kişisel bilgileri sınırlamak";
+    const paragraphText5 = "D) Tüm çalışanların e-posta şifrelerini aynı anda değiştirmek";
+    const paragraphText6 = "E) Aynalı sazan olmak  ";
+    const messageText1 = "CEVAP: Aynalı sazan olmak.";
+    const messageText2 = "Hala soru çözdüğünü mü zannediyorsun? Şu anda bilgilerine 5000$ veren bir alıcı buldum bile. Cevabın neden 'Aynalı sazan' olduğunu daha iyi anlamışsındır. :)";
+
+    let indexHeader = 0;
+    let indexParagraph1 = 0;
+    let indexParagraph2 = 0;
+    let indexParagraph3 = 0;
+    let indexParagraph4 = 0;
+    let indexParagraph5 = 0;
+    let indexParagraph6 = 0;
+    let indexMessage1 = 0;
+    let indexMessage2 = 0;
+    let speed = 75; // Yazma hızı (milisaniye cinsinden)
+
+    function typeWriter(element, text) {
+      const targetElement = document.getElementById(element);
+      if (!targetElement) return; // Hedef element bulunamadıysa işlemi durdur
+      const currentText = targetElement.innerHTML;
+      const length = currentText.length;
+
+      // Metni yavaşça yazdır
+      setTimeout(() => {
+        targetElement.innerHTML = currentText + text.charAt(length);
+        if (length < text.length - 1) {
+          typeWriter(element, text); // Metin tamamlanmadıysa devam et
+        }
+      }, speed);
+    }
+
+    window.onload = function () {
+      typeWriter("header", headerText);
+      setTimeout(() => typeWriter("paragraph1", paragraphText1), headerText.length * speed);
+      setTimeout(() => typeWriter("paragraph2", paragraphText2), (headerText.length + paragraphText1.length) * speed);
+      setTimeout(() => typeWriter("paragraph3", paragraphText3), (headerText.length + paragraphText1.length + paragraphText2.length) * speed);
+      setTimeout(() => typeWriter("paragraph4", paragraphText4), (headerText.length + paragraphText1.length + paragraphText2.length + paragraphText3.length) * speed);
+      setTimeout(() => typeWriter("paragraph5", paragraphText5), (headerText.length + paragraphText1.length + paragraphText2.length + paragraphText3.length + paragraphText4.length) * speed);
+      setTimeout(() => typeWriter("paragraph6", paragraphText6), (headerText.length + paragraphText1.length + paragraphText2.length + paragraphText3.length + paragraphText4.length + paragraphText5.length) * speed);
+      setTimeout(() => typeWriter("message1", messageText1), (headerText.length + paragraphText1.length + paragraphText2.length + paragraphText3.length + paragraphText4.length + paragraphText5.length + paragraphText6.length) * speed);
+      setTimeout(() => typeWriter("message2", messageText2), (headerText.length + paragraphText1.length + paragraphText2.length + paragraphText3.length + paragraphText4.length + paragraphText5.length + paragraphText6.length + messageText1.length) * speed);
+    };
+  </script>
+</body>
+</html>
